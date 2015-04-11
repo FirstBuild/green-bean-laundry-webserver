@@ -2,33 +2,32 @@
 var express = require('express');
 var app = express();
 var greenBean = require("green-bean");
-var SerialPort = require("serialport").SerialPort
-
-
+var serialport = require("serialport");
+var SerialPort = serialport.SerialPort;
 
 //simple way of caching all the data
 var CACHE_greenbean_machineStatus = {};
-var CACHE_arduino_message = {};
+var CACHE_arduino_data = {} ;
 
 var serialPort = new SerialPort("/dev/tty.usbmodem1411", {
+  parser: serialport.parsers.readline("\n"),
   baudrate: 9600
 });
 
 serialPort.on("open", function () {
   console.log('open');
   serialPort.on('data', function(data) {
-    CACHE_arduino_message = {"message" : data};
+    CACHE_arduino_data = {"data" : data};
   });
 });
-
 
 //express stuff
 app.get('/greenbean/machineStatus', function (req, res) {
   res.send(CACHE_greenbean_machineStatus);
 });
 
-app.get('/arduino/message', function (req, res) {
-  res.send(CACHE_arduino_message);
+app.get('/arduino/data', function (req, res) {
+  res.send(CACHE_arduino_data);
 });
 
 var server = app.listen(3001, function () {

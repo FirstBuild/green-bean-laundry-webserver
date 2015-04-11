@@ -6,5 +6,5 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   delay(2000);
-  Serial.println(millis());
+  Serial.println("mydata");
 }
