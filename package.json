@@ -1,0 +1,29 @@
+{
+  "name": "green-bean-laundry-webserver",
+  "version": "0.0.0",
+  "description": "Demo listening to green bean and showing in a webserver.",
+  "main": "machine-status.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/firstbuild/green-bean-laundry-webserver.git"
+  },
+  "keywords": [
+    "green-bean",
+    "ge",
+    "appliances"
+  ],
+  "author": "Myles Caley",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/firstbuild/green-bean-laundry-webserver/issues"
+  },
+  "homepage": "https://github.com/firstbuild/green-bean-laundry-webserver",
+  "dependencies": {
+    "express": "^4.12.3",
+    "green-bean": "git+https://github.com/GEMakers/green-bean.git",
+    "serialport": "^1.6.3"
+  }
+}
